@@ -1,4 +1,8 @@
+# Tasks Infinity App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+**Note: run `npm install` for install all project dependecies**
 
 ## Available Scripts
 
