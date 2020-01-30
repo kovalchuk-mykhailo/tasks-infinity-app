@@ -1,0 +1,50 @@
+.NavBarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 10vh auto;
+  background: #333;
+  box-shadow: 10px 10px 10px white;
+}
+
+.NavLinks {
+  display: flex;
+  align-items: center;
+}
+
+.WelcomeLink {
+  color: orangered;
+  margin: 10px;
+  text-decoration: none;
+  font-size: xx-large;
+}
+
+.TodoLink {
+  color: black;
+  margin: 10px;
+  font-size: x-large;
+  text-shadow: 1px 2px 10px black;
+}
+
+.WelcomeLink:hover,
+.TodoLink:hover {
+  color: white;
+  text-shadow: 3px 2px 10px grey;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.UserName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+}

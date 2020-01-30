@@ -1,0 +1,31 @@
+@import "../abstracts/functions";
+
+.btnSpecial {
+  color: black;
+  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
+  font-size: x-large;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px 8px;
+  outline: 0px;
+  border: 0px;
+  box-shadow: 2px 0px 5px aqua;
+
+  &:hover {
+    color: aqua;
+    background: black;
+  }
+}
+
+.submit-button {
+  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
+  color: white;
+  margin: margin(3) margin(0) margin(2) !important;
+  font-size: x-large !important;
+
+  &:hover {
+    // background: white !important;
+    // color: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%) !important;
+    box-shadow: 1px 1px 3px 3px whitesmoke !important;
+  }
+}
