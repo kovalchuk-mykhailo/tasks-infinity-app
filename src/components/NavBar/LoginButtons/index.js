@@ -1,13 +1,12 @@
 import React from 'react'
 import LinkButton from '../../LinkButton';
-import { SIGN_UP_PATH, TODO_LIST_PATH } from '../../../constants/Pathes';
+import { SIGN_UP_PATH, SIGN_IN_PATH } from '../../../constants/Pathes';
 
-const LoginButtons = ({ onSignInClick }) => {
+const LoginButtons = () => {
   return (
     <>
       <LinkButton
-        to={TODO_LIST_PATH}
-        onClick={onSignInClick}
+        to={SIGN_IN_PATH}
       >
         Sign In
       </LinkButton>

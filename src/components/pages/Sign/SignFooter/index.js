@@ -1,16 +1,19 @@
 import React from 'react'
+import PropTypes from "prop-types";
 
 import { Grid, Link } from '@material-ui/core'
 
-import { HOME_PATH } from '../../../../constants/Pathes';
+import { HOME_PATH } from '../../../../constants/Pathes'
 
-export default function SignFooter({ rightText, rightLinkPath }) {
-  return (
+const SignFooter = ({
+  rightText,
+  rightLinkPath
+}) => (
     <Grid container>
       <Grid item xs>
         <Link href={HOME_PATH} variant="body2">
           Home
-        </Link>
+    </Link>
       </Grid>
       <Grid item>
         <Link href={rightLinkPath} variant="body2">
@@ -18,5 +21,11 @@ export default function SignFooter({ rightText, rightLinkPath }) {
         </Link>
       </Grid>
     </Grid>
-  )
-}
+  );
+
+SignFooter.propTypes = {
+  rightText: PropTypes.string.isRequired,
+  rightLinkPath: PropTypes.string.isRequired,
+};
+
+export default SignFooter;

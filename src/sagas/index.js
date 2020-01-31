@@ -1,31 +1,42 @@
 import { put, takeEvery, all, call } from 'redux-saga/effects'
+import { getUserByEmailPassword } from '../utils/ApiClient'
+import { loginRequestUser, loginAsyncRequestUser, loginSuccessUser, loginFailureUser } from '../actions/loggedUser'
 
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
+// const delay = (ms) => new Promise(res => setTimeout(res, ms)).then(res => { console.log("Timeout") })
+
+const fakeUser = {
+  "email": "i1@gmail.com",
+  "password": "123",
+}
+
+const responseOk = (response) => {
+  return response.length;
+}
 
 function* helloSaga() {
   yield console.log('Hello Sagas!')
 }
 
-function* incrementAsync() {
+function* requestAsync() {
   try {
-    yield call(delay, 1000) // Call (fn, args) === delay(1000)
-    // const response = yield call(reqSignin())
-    // if (response.body.token) {
-    //   yield put({ 
-    //   type: 'Success login', 
-    //   token: response.body.token
-    // }) //success 
-    // } else {
-    //   throw yield put('Invalid Data on Login Form')
-    // }
-    yield put({ type: 'INCREMENT' })// === dispatch({ type: 'INCREMENT' })
+    yield put(loginRequestUser());
+    const response = yield call(getUserByEmailPassword, fakeUser);
+    console.log("response: ", response);
+
+    if (responseOk(response)) { // success => login
+      const user = response[0];
+      console.log("User:", user);
+      yield put(loginSuccessUser(user.firstName));
+    } else { // invalid Data => send Error message
+      throw new Error('Invalid Login Data');
+    }
   } catch (error) {
-    yield put('ERROR REQUEST')
+    yield put(loginFailureUser(error.message));
   }
 }
 
-function* watchIncrementAsync() {
-  yield takeEvery('INCREMENT_ASYNC', incrementAsync)//Always watch for incrementAsync, when action.type = INCREMENT_ASYNC
+function* watchRequestAsync() {
+  yield takeEvery(loginAsyncRequestUser().type, requestAsync)//Always watch for requestAsync, when action.type = LOGIN_ASYNC_REQUEST
 }
 
 // notice how we now only export the rootSaga
@@ -33,6 +44,6 @@ function* watchIncrementAsync() {
 export default function* rootSaga() {
   yield all([
     helloSaga(),
-    watchIncrementAsync()
+    watchRequestAsync()
   ])
 }

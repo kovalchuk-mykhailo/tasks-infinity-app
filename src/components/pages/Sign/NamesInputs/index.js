@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from "prop-types";
+
 import { Grid, TextField } from '@material-ui/core'
 
-function NamesInputs({ variant = "standard" }) {
+const NamesInputs = ({ variant }) => {
   return (
     <>
       <Grid item xs={12} sm={6}>
@@ -31,4 +33,12 @@ function NamesInputs({ variant = "standard" }) {
   )
 }
 
-export default NamesInputs
+NamesInputs.propTypes = {
+  variant: PropTypes.string,
+};
+
+NamesInputs.defaultProps = {
+  variant: "standard",
+};
+
+export default NamesInputs;

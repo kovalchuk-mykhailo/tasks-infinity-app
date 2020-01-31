@@ -1,15 +1,28 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_REQUEST, LOGOUT_SUCCESS } from "../constants/Login"
+import { LOGIN_ON_REQUEST, LOGIN_ON_SUCCESS, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGIN_ASYNC_REQUEST, LOGIN_ON_FAILURE } from "../constants/Login"
 
-export const loginUser = () => {
+export const loginAsyncRequestUser = () => {
   return {
-    type: LOGIN_REQUEST
+    type: LOGIN_ASYNC_REQUEST,
+  }
+}
+
+export const loginRequestUser = () => {
+  return {
+    type: LOGIN_ON_REQUEST,
   }
 }
 
 export const loginSuccessUser = (id) => {
   return {
-    type: LOGIN_SUCCESS,
+    type: LOGIN_ON_SUCCESS,
     id
+  }
+}
+
+export const loginFailureUser = (error) => {
+  return {
+    type: LOGIN_ON_FAILURE,
+    error
   }
 }
 

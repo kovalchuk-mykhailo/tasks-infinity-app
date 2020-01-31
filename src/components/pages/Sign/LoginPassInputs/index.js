@@ -1,7 +1,12 @@
 import React from 'react'
+import PropTypes from "prop-types";
+
 import { Grid, TextField } from '@material-ui/core'
 
-export default function LoginPassInputs({ variant = "standard" }) {
+const LoginPassInputs = ({
+  variant,
+  autoFocus
+}) => {
   return (
     <>
       <Grid item xs={12}>
@@ -14,7 +19,7 @@ export default function LoginPassInputs({ variant = "standard" }) {
           label="Email Address"
           name="email"
           autoComplete="email"
-          autoFocus
+          autoFocus={autoFocus}
         />
       </Grid>
       <Grid item xs={12}>
@@ -33,3 +38,15 @@ export default function LoginPassInputs({ variant = "standard" }) {
     </>
   )
 }
+
+LoginPassInputs.propTypes = {
+  variant: PropTypes.string,
+  autoFocus: PropTypes.bool,
+};
+
+LoginPassInputs.defaultProps = {
+  variant: "standard",
+  autoFocus: false,
+};
+
+export default LoginPassInputs;

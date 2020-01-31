@@ -15,6 +15,8 @@ import '../../../../sass/components/_icon.scss'
 import '../../../../sass/components/_form.scss'
 import { SIGN_UP_PATH } from '../../../../constants/Pathes';
 import LoginPassInputs from '../LoginPassInputs';
+import { connect } from 'react-redux';
+import { loginAsyncRequestUser } from '../../../../actions/loggedUser';
 
 function Copyright() {
   return (
@@ -29,9 +31,10 @@ function Copyright() {
   );
 }
 
-const SignIn = ({ location }) => {
+let SignIn = ({ onSignClick, location, userId }) => {
 
-  console.log('sigin location:', location);
+  console.log('signin location:', location);
+  console.log('signin userId:', userId);
   // console.log('sigin GO from:', location.state.from);
 
   return (
@@ -46,9 +49,10 @@ const SignIn = ({ location }) => {
         </Typography>
         <form className="sign-input-form" noValidate>
           <Grid container spacing={2}>
-            <LoginPassInputs />
+            <LoginPassInputs autoFocus />
           </Grid>
-          <SignButton text="Sign In" />
+          <SignButton text="Sign In"
+            onClick={onSignClick} />
           <SignFooter
             rightText="Don't have an account? Sign Up"
             rightLinkPath={SIGN_UP_PATH}
@@ -61,5 +65,15 @@ const SignIn = ({ location }) => {
     </Container>
   );
 }
+
+SignIn = connect(
+  null,
+  dispatch => ({
+    onSignClick: (e) => {
+      e.preventDefault();
+      dispatch(loginAsyncRequestUser())
+    }
+  })
+)(SignIn);
 
 export default SignIn;

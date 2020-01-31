@@ -1,36 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import DefaultLayout from "../pages/_layouts/default";
 import AuthLayout from "../pages/_layouts/auth";
-import { isSigned } from "../../utils/authentication";
-import { SIGN_IN_PATH } from "../../constants/Pathes";
+import { isUserSigned, getUserIdFromStorage } from "../../utils/authentication";
+import { SIGN_IN_PATH, TODO_LIST_PATH } from "../../constants/Pathes";
+import { loginSuccessUser } from "../../actions/loggedUser";
 
 let RouteWrapper = ({
   component: Component,
   isPrivate,
-  isAuthPage,
+  isNavBar,
   userId,
+  OnUserIsLogged,
   location,
   ...rest
 }) => {
+
+  useEffect(() => { //use Effect = componentDidMount()
+    const id = getUserIdFromStorage();
+    console.log("!!!USE EFFECT", id);
+    if (isUserSigned(id)) {
+      OnUserIsLogged(id);
+    }
+  });
+
   console.log("location", location.pathname)
   console.log("RouteWrapper. userId:", userId);
-  const signed = isSigned(userId);
+  const isSigned = isUserSigned();
 
-  const from = location.pathname;
   /**
    * Redirect user to SignIn page if he tries to access a private route
    * without authentication.
    */
-  if (isPrivate && !signed) {
+  if (isPrivate && !isSigned) {
     console.log("Redirect to", SIGN_IN_PATH);
     return <Redirect to={{
       pathname: SIGN_IN_PATH,
       state: {
-        from,
+        from: location.pathname,
       }
     }} />;
   }
@@ -39,15 +49,15 @@ let RouteWrapper = ({
    * Redirect user to Main page if he tries to access a non private route
    * (SignIn or SignUp) after being authenticated.
    */
-  // if (!isPrivate && signed) {
-  //   console.log("Redirect", HOME_PATH);
-  //   return <Redirect to={HOME_PATH} />;
-  // }
-
-  const Layout = isAuthPage ? AuthLayout : DefaultLayout;
-  const myProps = isAuthPage ? {} : {
-    userId: userId,
+  if (!isNavBar && isSigned) {
+    console.log("Redirect", TODO_LIST_PATH);
+    return <Redirect to={TODO_LIST_PATH} />;
   }
+
+  const Layout = isNavBar ? DefaultLayout : AuthLayout;
+  const myProps = !isNavBar ? {} : {
+    userId,
+  };
 
   /**
    * If not included on both previous cases, redirect user to the desired route.
@@ -66,22 +76,27 @@ let RouteWrapper = ({
 
 RouteWrapper.propTypes = {
   userId: PropTypes.string.isRequired,
+  OnUserIsLogged: PropTypes.func.isRequired,
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
   isPrivate: PropTypes.bool,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired
+  isNavBar: PropTypes.bool,
 };
 
 RouteWrapper.defaultProps = {
   isPrivate: false,
-  isAuthPage: false,
+  isNavBar: false,
 };
 
 const mapStateToProps = state => {
-  console.log("RouteWrapper, mapped store:", state.loggedUser);
   return ({
     userId: state.loggedUser.id,
   })
 };
 
-RouteWrapper = connect(mapStateToProps)(RouteWrapper)
+const mapDispatchToProps = dispatch => ({
+  OnUserIsLogged: (id) => dispatch(loginSuccessUser(id)),
+});
+
+RouteWrapper = connect(mapStateToProps, mapDispatchToProps)(RouteWrapper)
 
 export default RouteWrapper;
