@@ -22,7 +22,7 @@
 }
 
 .TodoLink {
-  color: black;
+  color: whitesmoke;
   margin: 10px;
   font-size: x-large;
   text-shadow: 1px 2px 10px black;
@@ -30,7 +30,7 @@
 
 .WelcomeLink:hover,
 .TodoLink:hover {
-  color: white;
+  color: blue;
   text-shadow: 3px 2px 10px grey;
 }
 

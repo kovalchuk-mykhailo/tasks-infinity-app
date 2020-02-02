@@ -14,7 +14,6 @@ const SignButton = ({
         type="submit"
         fullWidth
         variant="contained"
-        color="primary"
         className="submit-button"
         onClick={onClick}
       >

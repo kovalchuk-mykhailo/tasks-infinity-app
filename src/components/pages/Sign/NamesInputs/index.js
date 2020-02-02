@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 
 import { Grid, TextField } from '@material-ui/core'
 
-const NamesInputs = ({ variant }) => {
+const NamesInputs = ({
+  variant,
+  handleFirstnameChange,
+  handleLastnameChange,
+}) => {
   return (
     <>
       <Grid item xs={12} sm={6}>
@@ -15,6 +19,7 @@ const NamesInputs = ({ variant }) => {
           fullWidth
           id="firstName"
           label="First Name"
+          onChange={handleFirstnameChange}
           autoFocus
         />
       </Grid>
@@ -27,6 +32,7 @@ const NamesInputs = ({ variant }) => {
           label="Last Name"
           name="lastName"
           autoComplete="lname"
+          onChange={handleLastnameChange}
         />
       </Grid>
     </>

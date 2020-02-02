@@ -1,4 +1,5 @@
-import { generateUserUrl } from './UrlGenerator'
+// import { generateUserUrl } from './UrlGenerator'
+import UrlGenerator from './UrlGenerator'
 
 export const getResponseJson = async (url) => {
   const response = await fetch(url);
@@ -6,7 +7,12 @@ export const getResponseJson = async (url) => {
   return response.json();
 }
 
-export const getUserByEmailPassword = async (params) => {
-  const url = generateUserUrl(params);
+export const getUserByEmailPassword = async ({ email, password }) => {
+  const url = new UrlGenerator()
+    .users()
+    .withEmail(email)
+    .withPassword(password)
+    .url;
+  console.log("urlGenerator: ", url);
   return getResponseJson(url);
 }

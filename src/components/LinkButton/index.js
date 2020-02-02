@@ -23,7 +23,7 @@ const LinkButton = (props) => {
         onClick && onClick(event)
         history.push(to)
       }}
-      className="btnSpecial"
+      className="link-button"
     />
   )
 }

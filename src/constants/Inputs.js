@@ -1,0 +1,5 @@
+export const INPUT_PASSWORD = "INPUT_PASSWORD";
+export const INPUT_EMAIL = "INPUT_EMAIL";
+export const INPUT_FIRSTNAME = "INPUT_FIRSTNAME";
+export const INPUT_LASTNAME = "INPUT_LASTNAME";
+export const CLEAR_INPUTS = "CLEAR_INPUTS";

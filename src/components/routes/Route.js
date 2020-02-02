@@ -25,11 +25,11 @@ let RouteWrapper = ({
     if (isUserSigned(id)) {
       OnUserIsLogged(id);
     }
-  });
+  }, [OnUserIsLogged]);
 
   console.log("location", location.pathname)
   console.log("RouteWrapper. userId:", userId);
-  const isSigned = isUserSigned();
+  const isSigned = isUserSigned(userId);
 
   /**
    * Redirect user to SignIn page if he tries to access a private route

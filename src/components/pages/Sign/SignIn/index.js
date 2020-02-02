@@ -5,7 +5,6 @@ import SignFooter from '../SignFooter';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -14,9 +13,9 @@ import Container from '@material-ui/core/Container';
 import '../../../../sass/components/_icon.scss'
 import '../../../../sass/components/_form.scss'
 import { SIGN_UP_PATH } from '../../../../constants/Pathes';
-import LoginPassInputs from '../LoginPassInputs';
 import { connect } from 'react-redux';
 import { loginAsyncRequestUser } from '../../../../actions/loggedUser';
+import Inputs from '../Inputs';
 
 function Copyright() {
   return (
@@ -31,11 +30,14 @@ function Copyright() {
   );
 }
 
-let SignIn = ({ onSignClick, location, userId }) => {
+let SignIn = ({
+  onSignInClick,
+  location,
+  userId
+}) => {
 
   console.log('signin location:', location);
   console.log('signin userId:', userId);
-  // console.log('sigin GO from:', location.state.from);
 
   return (
     <Container component="main" maxWidth="xs" >
@@ -48,11 +50,9 @@ let SignIn = ({ onSignClick, location, userId }) => {
           Sign in
         </Typography>
         <form className="sign-input-form" noValidate>
-          <Grid container spacing={2}>
-            <LoginPassInputs autoFocus />
-          </Grid>
+          <Inputs />
           <SignButton text="Sign In"
-            onClick={onSignClick} />
+            onClick={onSignInClick} />
           <SignFooter
             rightText="Don't have an account? Sign Up"
             rightLinkPath={SIGN_UP_PATH}
@@ -69,7 +69,7 @@ let SignIn = ({ onSignClick, location, userId }) => {
 SignIn = connect(
   null,
   dispatch => ({
-    onSignClick: (e) => {
+    onSignInClick: (e) => {
       e.preventDefault();
       dispatch(loginAsyncRequestUser())
     }

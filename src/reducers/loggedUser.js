@@ -1,13 +1,11 @@
 import { LOGIN_ON_SUCCESS, LOGOUT_SUCCESS, LOGIN_ON_REQUEST, LOGIN_ASYNC_REQUEST, LOGIN_ON_FAILURE } from "../constants/Login";
 import { setUserToStorage, removeUserFromStorage } from "../utils/authentication";
 
-const generateState = (id, isLoading, error) => ({
-  id,
-  isLoading,
-  error,
-})
-
-const initialState = generateState('', false, '');
+const initialState = {
+  id: '',
+  isLoading: false,
+  error: '',
+}
 
 export const loggedUserReducer = (state = initialState, action) => {
   switch (action.type) {

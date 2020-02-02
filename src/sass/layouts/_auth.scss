@@ -7,7 +7,7 @@
     rgba(148, 187, 233, 1) 100%
   );
 
-  height: $page-height;
+  min-height: $page-height;
   display: flex;
   justify-content: center;
   align-items: center;

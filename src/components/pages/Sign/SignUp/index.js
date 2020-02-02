@@ -5,7 +5,6 @@ import SignFooter from '../SignFooter';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -14,8 +13,7 @@ import Container from '@material-ui/core/Container';
 import '../../../../sass/components/_icon.scss'
 import '../../../../sass/components/_form.scss'
 import { SIGN_IN_PATH } from '../../../../constants/Pathes';
-import LoginPassInputs from '../LoginPassInputs';
-import NamesInputs from '../NamesInputs';
+import Inputs from '../Inputs';
 
 
 function Copyright() {
@@ -44,11 +42,11 @@ const SignUp = () => {
           Sign up
         </Typography>
         <form className="sign-input-form" noValidate>
-          <Grid container spacing={2}>
-            <NamesInputs variant="outlined" />
-            <LoginPassInputs variant="outlined" />
-          </Grid>
-          <SignButton text="Sign Up" />
+          <Inputs variant="outlined" signup />
+          <SignButton
+            text="Sign Up"
+            onClick={() => console.log('onClick')}
+          />
           <SignFooter
             rightText="Already have an account? Sign in"
             rightLinkPath={SIGN_IN_PATH}

@@ -1,34 +1,30 @@
 @import "../abstracts/functions";
+@import "../abstracts/variables";
 
-.btnSpecial {
-  color: black;
-  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
-  font-size: x-large;
+.link-button {
+  color: $btn-color;
+  background: $btn-background;
+  box-shadow: $btn-aqua-shadow;
+  font-size: $btn-font-size;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 8px 8px;
-  outline: 0px;
-  border: 0px;
-  box-shadow: 2px 0px 5px aqua;
 
   &:hover {
-    color: aqua;
-    background: black;
+    color: $btn-onhover-color;
+    background: $btn-onhover-background;
   }
 }
 
 .submit-button {
-  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
-  color: white;
+  color: $btn-color !important;
+  background: $btn-background;
+  font-size: $btn-font-size !important;
   margin: margin(3) margin(0) margin(2) !important;
-  font-size: x-large !important;
 
-  // &:hover {
-  //   box-shadow: 1px 1px 3px 3px whitesmoke !important;
-  // }
   &:hover {
-    color: aqua !important;
-    background: black !important;
-    box-shadow: 2px 0px 5px aqua !important;
+    color: $btn-onhover-color !important;
+    background: $btn-onhover-background !important;
+    box-shadow: $btn-aqua-shadow !important;
   }
 }

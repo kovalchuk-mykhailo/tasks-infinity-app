@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from "prop-types";
 
-import { Grid, Link } from '@material-ui/core'
+import { Link } from 'react-router-dom';
+import { Grid } from '@material-ui/core'
 
 import { HOME_PATH } from '../../../../constants/Pathes'
 
@@ -11,12 +12,12 @@ const SignFooter = ({
 }) => (
     <Grid container>
       <Grid item xs>
-        <Link href={HOME_PATH} variant="body2">
+        <Link to={HOME_PATH} >
           Home
-    </Link>
+        </Link>
       </Grid>
       <Grid item>
-        <Link href={rightLinkPath} variant="body2">
+        <Link to={rightLinkPath} >
           {rightText}
         </Link>
       </Grid>

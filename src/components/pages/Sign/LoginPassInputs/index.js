@@ -5,43 +5,45 @@ import { Grid, TextField } from '@material-ui/core'
 
 const LoginPassInputs = ({
   variant,
-  autoFocus
-}) => {
-  return (
+  autoFocus,
+  handleEmailChange,
+  handlePasswordChange
+}) => (
     <>
       <Grid item xs={12}>
         <TextField
           variant={variant}
-          margin="normal"
           required
           fullWidth
           id="email"
           label="Email Address"
           name="email"
           autoComplete="email"
+          onChange={handleEmailChange}
           autoFocus={autoFocus}
         />
       </Grid>
       <Grid item xs={12}>
         <TextField
           variant={variant}
-          margin="normal"
           required
           fullWidth
           name="password"
           label="Password"
           type="password"
           id="password"
+          onChange={handlePasswordChange}
           autoComplete="current-password"
         />
       </Grid>
     </>
-  )
-}
+  );
 
 LoginPassInputs.propTypes = {
   variant: PropTypes.string,
   autoFocus: PropTypes.bool,
+  handleEmailChange: PropTypes.func.isRequired,
+  handlePasswordChange: PropTypes.func.isRequired,
 };
 
 LoginPassInputs.defaultProps = {
