@@ -20,6 +20,7 @@ const NamesInputs = ({
           id="firstName"
           label="First Name"
           onChange={handleFirstnameChange}
+          color="secondary"
           autoFocus
         />
       </Grid>
@@ -31,6 +32,7 @@ const NamesInputs = ({
           id="lastName"
           label="Last Name"
           name="lastName"
+          color="secondary"
           autoComplete="lname"
           onChange={handleLastnameChange}
         />

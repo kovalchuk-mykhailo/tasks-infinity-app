@@ -2,5 +2,7 @@
 
 .Default-Wrapper {
   background: linear-gradient(to bottom, #e7ffb3, #707070);
-  height: $page-height;
+  min-height: $page-height;
+  display: flex;
+  justify-content: center;
 }

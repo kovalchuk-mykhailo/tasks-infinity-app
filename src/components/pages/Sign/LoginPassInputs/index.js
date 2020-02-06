@@ -18,7 +18,7 @@ const LoginPassInputs = ({
           id="email"
           label="Email Address"
           name="email"
-          autoComplete="email"
+          color="secondary"
           onChange={handleEmailChange}
           autoFocus={autoFocus}
         />
@@ -32,6 +32,7 @@ const LoginPassInputs = ({
           label="Password"
           type="password"
           id="password"
+          color="secondary"
           onChange={handlePasswordChange}
           autoComplete="current-password"
         />

@@ -14,13 +14,25 @@ export default class UrlGenerator {
   }
 
   users = () => {
-    this.url = this.url.concat`users`;
+    this.url = this.url.concat(`users`);
+    this.sign = '?';
+    return this;
+  }
+
+  tasks = () => {
+    this.url = this.url.concat(`tasks`);
     this.sign = '?';
     return this;
   }
 
   withEmail(email) {
     this.url = this.url.concat(`${this.sign}email=${email}`);
+    this.sign = '&';
+    return this;
+  }
+
+  withUserId(userId) {
+    this.url = this.url.concat(`${this.sign}userId=${userId}`);
     this.sign = '&';
     return this;
   }

@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, EDIT_TASK_MODE, SAVE_EDIT_TASK, CANCEL_EDIT_TASK, TOGGLE_TASK } from '../constants/Todo'
+import { DELETE_TASK, EDIT_TASK_MODE, SAVE_EDIT_TASK, CANCEL_EDIT_TASK, TOGGLE_TASK, ADD_TASK_REQUEST } from '../constants/Todo'
 
 const initialState = {
   id: '',
@@ -6,19 +6,20 @@ const initialState = {
   completed: false,
   createdDate: '',
   editDate: '',
+  userId: '',
 }
 
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case ADD_TASK:
+    case ADD_TASK_REQUEST:
       const createdDate = (new Date()).toLocaleDateString();
       const task = {
-        id: action.id,
         text: action.text,
         createdDate: createdDate,
         editDate: createdDate,
         completed: false,
+        userId: action.userId
       };
       console.log(task);
       return task;

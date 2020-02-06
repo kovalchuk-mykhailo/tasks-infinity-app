@@ -6,7 +6,7 @@ const Task = ({
   onClick
 }) => {
   return (
-    <li onClick={onClick}
+    <div onClick={onClick}
       style={{
         textDecoration: completed ?
           'line-through' :
@@ -16,7 +16,7 @@ const Task = ({
       }}
     >
       {text}
-    </li>
+    </div>
   )
 }
 

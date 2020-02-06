@@ -5,7 +5,7 @@ export const getUserIdFromStorage = () => {
 }
 
 export const isUserSigned = (id = getUserIdFromStorage()) => {
-  return true && id;
+  return id !== null && id !== '';
 }
 
 export const setUserToStorage = (id) => {

@@ -28,7 +28,7 @@ let RouteWrapper = ({
   }, [OnUserIsLogged]);
 
   console.log("location", location.pathname)
-  console.log("RouteWrapper. userId:", userId);
+  console.log("RouteWrapper.userId:", userId);
   const isSigned = isUserSigned(userId);
 
   /**
